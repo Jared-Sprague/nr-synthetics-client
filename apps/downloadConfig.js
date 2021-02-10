@@ -1,8 +1,8 @@
 //@ts-check
 /**
- * 
+ *
  * Download Synthetics Monitor Configuration
- * 
+ *
  */
 const inquirer = require("inquirer");
 
@@ -26,6 +26,10 @@ console.log(`Using apiKey: ${colorize.orange(JSON.stringify(apiKey))}`);
     const smgr = synthClient({
         apiKey
     });
+
+    const alertPolicies = await smgr.getAllAlertPolicies();
+    const alertChannels = await smgr.getAllAlertChannels();
+    const alertConditions = await smgr.getAllAlertConditions(alertPolicies);
 
     // Get monitors and save to local
     const response = await smgr.getAllMonitors({

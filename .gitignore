@@ -11,3 +11,5 @@ nr-testconfig.json
 
 # rest client test
 *.http
+
+.idea
